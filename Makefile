@@ -1,15 +1,15 @@
 out: ./client/client.o ./server/server.o debugging.o
-	g++ ./client/client.o debugging.o -o ./client/c -lpthread
-	g++ ./server/server.o debugging.o -o ./server/s -lpthread
+	g++ -std=c++11 ./client/client.o debugging.o -o ./client/c -lpthread
+	g++ -std=c++11 ./server/server.o debugging.o -o ./server/s -lpthread
 	
 ./client/client.o: ./client/client.cpp ./protocol_header.h
-	g++ -c ./client/client.cpp -o ./client/client.o
+	g++ -std=c++11 -c ./client/client.cpp -o ./client/client.o 
 
 ./server/server.o: ./server/server.cpp ./protocol_header.h
-	g++ -c ./server/server.cpp -o ./server/server.o
+	g++ -std=c++11 -c ./server/server.cpp -o ./server/server.o
 
 ./debugging.o: ./debugging.cpp ./debugging.h
-	g++ -c ./debugging.cpp
+	g++ -std=c++11 -c ./debugging.cpp
 
 clean_o:
 	rm *.o ./client/*.o ./server/*.o
