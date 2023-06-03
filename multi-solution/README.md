@@ -18,16 +18,16 @@ Just run the makefile and run ``` ./s ``` for server and ``` ./c ``` for client 
 ## Sample Output
 
 ### Connection
-![image](/.images/1.png)
+![image](.images/1.png)
 
 ### Messaging
-![image](/.images/2.png)
+![image](.images/2.png)
 
 ### File Uploading
-![image](/.images/3.png)
+![image](.images/3.png)
 
 ### File Request & Downloading
-![image](/.images/4.png)
+![image](.images/4.png)
 
 
 ## License
