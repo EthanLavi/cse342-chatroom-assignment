@@ -173,9 +173,12 @@ void print_options() {
     fflush(stdout);
 }
 
+volatile bool is_done = false;
+
 void is_sending(int sock_fd) {
     int user_choice;
     while (true) {
+        if (is_done) break;
         print_options();
         cin >> user_choice;
         cin.ignore(1,'\n');
@@ -239,6 +242,11 @@ void is_receiving(int sock_fd) {
         memset(buffer, 0, PACKET_SIZE);
 
         int recv_len = recv(sock_fd, buffer, PACKET_SIZE, 0);
+        if (recv_len == 0) {
+            is_done = true;
+            printf("\nServer has closed\n");
+            exit(0);
+        }
         error_check(recv_len, "Socket Receiving");
         switch(oh->type) {
         case BROADCAST_PKT: {

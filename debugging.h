@@ -1,6 +1,6 @@
 #include "stdio.h"
 
-// #define DEBUGGING
+#define DEBUGGING 0
 
 #define min(x,y) (x<y)?x:y
 

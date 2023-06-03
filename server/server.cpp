@@ -6,7 +6,6 @@
 #include <sys/socket.h>
 #include <netinet/in.h>
 #include <arpa/inet.h>
-
 #include "../protocol_header.h"
 #include "../debugging.h"
 
@@ -174,6 +173,10 @@ void is_receiving(socket_info s_info) {
         memset(buffer, 0, PACKET_SIZE);
 
         int recv_len = recv(s_info.sock_fd, buffer, PACKET_SIZE, 0);
+        if (recv_len == 0){
+            printf("\nClient (%s) disconnected\n", s_info.client_name);
+            break;
+        }
         error_check(recv_len, "Socket Receiving");
         switch(oh->type) {
             case BROADCAST_PKT: {
